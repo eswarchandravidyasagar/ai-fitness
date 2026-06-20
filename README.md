@@ -1,36 +1,57 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# AI Fitness Coach
 
-## Getting Started
+Free browser-based fitness coach with **live camera pose tracking**, rep/set counting, form cues, and voice feedback. Runs entirely on your device — no API keys, no video upload.
 
-First, run the development server:
+**Live demo:** `https://<your-username>.github.io/ai-fitness/`
+
+## Features
+
+- Real-time skeleton overlay via [MediaPipe Pose Landmarker](https://developers.google.com/mediapipe/solutions/vision/pose_landmarker)
+- Rep counting with joint-angle state machines
+- Voice form cues via Web Speech API
+- Exercises: push-ups, squats, pull-ups, lunges, plank
+- Set tracking with rest timer
+- Static Next.js site — host free on GitHub Pages
+
+## Privacy
+
+Your camera feed is processed locally in the browser. No frames are sent to any server after the pose model is downloaded.
+
+## Camera setup
+
+| Exercise | Best camera angle |
+|----------|-------------------|
+| Push-ups | Side view, full body |
+| Squats | Side or 45°, hips to ankles visible |
+| Pull-ups | Side view, arms and upper body |
+| Lunges | Side view, both legs |
+| Plank | Side view, full profile |
+
+Prop your phone against something stable. Good lighting and fitted clothing improve accuracy.
+
+## Local development
 
 ```bash
+npm install
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open [http://localhost:3000](http://localhost:3000). Camera requires HTTPS in production; `localhost` is allowed for dev.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Deploy to GitHub Pages
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+1. Create a repo named `ai-fitness` (or update `repo` in `next.config.ts`)
+2. Push to `main`
+3. Enable **Settings → Pages → Build and deployment → GitHub Actions**
+4. The workflow in `.github/workflows/deploy.yml` builds and deploys `out/`
 
-## Learn More
+## Tech stack
 
-To learn more about Next.js, take a look at the following resources:
+- Next.js (App Router, static export)
+- TypeScript
+- Tailwind CSS
+- MediaPipe `@mediapipe/tasks-vision`
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Disclaimer
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Form feedback is heuristic, not professional coaching or medical advice. Always train safely.

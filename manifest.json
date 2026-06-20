@@ -1,0 +1,10 @@
+{
+  "name": "AI Fitness Coach",
+  "short_name": "Fitness",
+  "description": "Live camera pose tracking for workouts",
+  "start_url": ".",
+  "display": "standalone",
+  "background_color": "#09090b",
+  "theme_color": "#10b981",
+  "icons": []
+}

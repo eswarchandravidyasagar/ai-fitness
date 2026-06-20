@@ -40,10 +40,16 @@ Open [http://localhost:3000](http://localhost:3000). Camera requires HTTPS in pr
 
 ## Deploy to GitHub Pages
 
-1. Create a repo named `ai-fitness` (or update `repo` in `next.config.ts`)
-2. Push to `main`
-3. Enable **Settings → Pages → Build and deployment → GitHub Actions**
-4. The workflow in `.github/workflows/deploy.yml` builds and deploys `out/`
+Live URL: **https://eswarchandravidyasagar.github.io/ai-fitness/**
+
+1. Push to `main` — the workflow builds and pushes static files to the `gh-pages` branch
+2. Enable Pages (one-time):
+   - Open [repo Settings → Pages](https://github.com/eswarchandravidyasagar/ai-fitness/settings/pages)
+   - **Build and deployment → Source:** Deploy from a branch
+   - **Branch:** `gh-pages` / `/ (root)` → Save
+3. Wait ~1 minute, then open the live URL above
+
+If deploy fails with a 404, Pages is not enabled yet — complete step 2 first, then re-run the workflow from the Actions tab.
 
 ## Tech stack
 

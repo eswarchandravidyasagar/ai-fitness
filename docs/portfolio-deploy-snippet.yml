@@ -1,0 +1,20 @@
+# Add these steps to eswarchandravidyasagar.github.io/.github/workflows/deploy.yml
+# after "Build portfolio" and before "Upload artifact":
+
+      - name: Checkout ai-fitness
+        uses: actions/checkout@v4
+        with:
+          repository: eswarchandravidyasagar/ai-fitness
+          path: ai-fitness
+
+      - name: Build ai-fitness
+        run: |
+          cd ai-fitness
+          npm ci
+          npm run build
+
+      - name: Bundle ai-fitness at /ai-fitness
+        run: |
+          mkdir -p out/ai-fitness
+          cp -r ai-fitness/out/* out/ai-fitness/
+          touch out/.nojekyll
